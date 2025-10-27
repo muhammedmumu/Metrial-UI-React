@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   AppBar, 
   Toolbar, 
@@ -59,10 +59,26 @@ export default function Navbar() {
     setAnchorEl(null);
   };
 
+  const debouncedLogRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (debouncedLogRef.current) {
+        clearTimeout(debouncedLogRef.current);
+      }
+    };
+  }, []);
+
   const handleSearchChange = (event) => {
-    actions.setSearchQuery(event.target.value);
-    // Here you would implement search logic
-    console.log('Search query:', event.target.value);
+    const value = event.target.value;
+    actions.setSearchQuery(value);
+
+    if (debouncedLogRef.current) {
+      clearTimeout(debouncedLogRef.current);
+    }
+    debouncedLogRef.current = setTimeout(() => {
+      console.log('Search query:', value);
+    }, 300); // debounce delay in ms
   };
 
   const handleSearchSubmit = (event) => {
