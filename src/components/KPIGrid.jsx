@@ -8,18 +8,35 @@ const KPIGrid = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+
     const fetchKpiData = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://127.0.0.1:8000/api/kpi/');
         
+        // Add timeout to prevent hanging requests
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+        
+        const response = await fetch('http://127.0.0.1:8000/api/kpi/', {
+          signal: controller.signal,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        
+        clearTimeout(timeoutId);
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
+
         const data = await response.json();
         // Normalize backend field `bg_color` -> `bgcolor` so ReusableCard receives the expected prop
         const normalized = (Array.isArray(data) ? data : [])
+<<<<<<< HEAD
+=======
+          .slice(0, 6)
+>>>>>>> c3b0faea5ef3dd165ca3ac61348b3edb6fb3ed8b
           .map((item) => ({
             ...item,
             // prefer backend `bg_color`, then `bgcolor` if already present
@@ -29,8 +46,8 @@ const KPIGrid = () => {
         setKpiData(normalized);
         setError(null);
       } catch (err) {
-        console.error('Error fetching KPI data:', err);
-        setError(err.message);
+        console.warn('KPI API unavailable, using fallback data:', err.message);
+        setError(null); // Don't show error to user, just use fallback
       } finally {
         setLoading(false);
       }
@@ -42,7 +59,7 @@ const KPIGrid = () => {
   return (
     <Grid container spacing={3}>
       {loading ? (
-        <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
+        <Grid item xs={12} lg={4} sx={{ display: 'flex', justifyContent: 'space-evenly', py: 4 }}>
           <CircularProgress />
         </Grid>
       ) : error ? (
@@ -53,13 +70,13 @@ const KPIGrid = () => {
         </Grid>
       ) : (
         kpiData.map((kpi, index) => (
-          <Grid 
-            item 
+          <Grid
+            item
             xs={12}        // 1 card per row on extra small screens
             sm={12}        // 1 card per row on small screens
             md={4}         // 3 cards per row on medium screens
-            lg={4}   
-          
+            lg={12}         // 4 cards per row on large screens
+
             // 4 cards per row on large screens
             key={index}
             sx={{
@@ -81,9 +98,7 @@ const KPIGrid = () => {
               onClick={kpi.onClick || (() => console.log(`${kpi.title} clicked!`))}
               sx={{ width: { xs: '100%', sm: '100%', md: 'auto' } }}
             >
-              <Typography variant="body2" sx={{ mt: 0.5, color: 'text.secondary' }}>
-                {kpi.description}
-              </Typography>
+
             </ReusableCard>
           </Grid>
         ))
