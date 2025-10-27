@@ -3,7 +3,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Box, Avatar, Stack, Chip } from '@mui/material';
 
 
-const EmployeesTable = ({ employees, onSelectionChange }) => {
+const EmployeesTable = ({ employees = [], onSelectionChange }) => {
   const [selectionModel, setSelectionModel] = useState([]);
 
   const handleSelectionChange = (newSelection) => {

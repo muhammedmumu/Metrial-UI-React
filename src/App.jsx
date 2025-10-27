@@ -5,10 +5,10 @@ import { AppProvider } from './context/AppContext.jsx';
 import { theme } from './theme/theme.js';
 import MainLayout from './components/layout/MainLayout.jsx';
 import KPIGrid from './components/KPIGrid.jsx';
-import DataTable from './components/tables/DataTable/DataTable.jsx';
 import LineChart from './components/charts/LineChart/LineChart.jsx';
-import StatsCard from './components/cards/StatsCard/StatsCard.jsx';
-import { mockChartData } from './utils/mockData.js';
+import EmployeesTable from './components/tables/EmployeesTable/EmployeesTable.jsx';
+import { mockEmployees,mockChartData } from './utils/mockData.js';
+
 
 // Sample data for DataTable
 const sampleRows = [
@@ -46,28 +46,23 @@ function App() {
           >
             Dashboard
           </Typography>
+
+
           <Box sx={{ display: "flex", gap: 3, flexDirection: "row", width: "100%" }}>
             <Box sx={{ display: "flex", gap: 3, flexDirection: "column", width: "50%" }}>
-              <Box sx={{ width: "100%" }}>
+              <Box KpiGrid sx={{ width: "100%" }}>
                 {/* KPI Cards Grid */}
                 <KPIGrid />
               </Box>
-              <Box  chart sx={{}}>
+              <Box cardsgraph sx={{}}>
                 <Typography variant="h6" sx={{ mb: 2 }}>Trend</Typography>
                 <LineChart data={mockChartData} xKey="date" series={[{ dataKey: 'value', name: 'Value', color: '#1976d2' }]} />
               </Box>
             </Box>
             <Box>
-
-              {/* <Box>
-                <DataTable rows={sampleRows} columns={sampleColumns} />
-              </Box> */}
+              employee table to go here
+              <EmployeesTable employees={mockEmployees} />
             </Box>
-            {/* <Box sx={{ }}>
-              <StatsCard title="Trend">
-                <LineChart data={mockChartData} xKey="date" series={[{ dataKey: 'value', name: 'Value', color: '#1976d2' }]} />
-              </StatsCard>
-            </Box> */}
           </Box>
         </MainLayout>
       </AppProvider>
