@@ -33,10 +33,6 @@ const KPIGrid = () => {
         const data = await response.json();
         // Normalize backend field `bg_color` -> `bgcolor` so ReusableCard receives the expected prop
         const normalized = (Array.isArray(data) ? data : [])
-<<<<<<< HEAD
-=======
-          .slice(0, 6)
->>>>>>> c3b0faea5ef3dd165ca3ac61348b3edb6fb3ed8b
           .map((item) => ({
             ...item,
             // prefer backend `bg_color`, then `bgcolor` if already present
