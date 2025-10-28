@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Typography, CircularProgress, Alert, useTheme } from '@mui/material';
 import { ReusableCard } from './cards/index.js';
+import { mockKpiData } from '../utils/mockData.js';
 
 const KPIGrid = () => {
   const [kpiData, setKpiData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [usingMockData, setUsingMockData] = useState(false);
   const theme = useTheme();
 
   useEffect(() => {
@@ -29,9 +31,20 @@ const KPIGrid = () => {
 
         setKpiData(normalized);
         setError(null);
+        setUsingMockData(false);
       } catch (err) {
         console.error('Error fetching KPI data:', err);
-        setError(err.message);
+        console.log('Using fallback mock data for KPI display');
+        
+        // Use mock data as fallback
+        const normalizedMockData = mockKpiData.map((item) => ({
+          ...item,
+          bgcolor: item.bg_color ?? item.bgcolor ?? item.bgColor ?? undefined,
+        }));
+        
+        setKpiData(normalizedMockData);
+        setError(null); // Clear error since we have fallback data
+        setUsingMockData(true);
       } finally {
         setLoading(false);
       }
@@ -53,7 +66,15 @@ const KPIGrid = () => {
           </Alert>
         </Grid>
       ) : (
-        kpiData.map((kpi, index) => (
+        <>
+          {usingMockData && (
+            <Grid item xs={12}>
+              <Alert severity="info" sx={{ mb: 2 }}>
+                Using demo data - backend service unavailable
+              </Alert>
+            </Grid>
+          )}
+          {kpiData.map((kpi, index) => (
           <Grid 
             item 
             xs={12}        // 1 card per row on extra small screens
@@ -94,7 +115,8 @@ const KPIGrid = () => {
               </Typography>
             </ReusableCard>
           </Grid>
-        ))
+        ))}
+        </>
       )}
     </Grid>
   );

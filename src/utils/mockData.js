@@ -97,3 +97,60 @@ export const mockEmployees = [
     profileUrl: '/employees/8',
   },
 ];
+
+export const mockKpiData = [
+  {
+    title: 'Total Revenue',
+    value: '$124,580',
+    change: '+12.5%',
+    icon: 'TrendingUp',
+    color: '#4caf50',
+    bg_color: '#e8f5e8',
+    description: 'Monthly revenue growth'
+  },
+  {
+    title: 'Active Users',
+    value: '8,421',
+    change: '+8.2%',
+    icon: 'People',
+    color: '#2196f3',
+    bg_color: '#e3f2fd',
+    description: 'Total active users this month'
+  },
+  {
+    title: 'Sales Conversion',
+    value: '24.8%',
+    change: '+3.1%',
+    icon: 'ShoppingCart',
+    color: '#ff9800',
+    bg_color: '#fff3e0',
+    description: 'Lead to sale conversion rate'
+  },
+  {
+    title: 'Customer Satisfaction',
+    value: '94.5%',
+    change: '+1.2%',
+    icon: 'Star',
+    color: '#9c27b0',
+    bg_color: '#f3e5f5',
+    description: 'Average customer rating'
+  },
+  {
+    title: 'Monthly Orders',
+    value: '1,284',
+    change: '+15.3%',
+    icon: 'Receipt',
+    color: '#f44336',
+    bg_color: '#ffebee',
+    description: 'Total orders processed'
+  },
+  {
+    title: 'Support Tickets',
+    value: '127',
+    change: '-5.4%',
+    icon: 'Support',
+    color: '#607d8b',
+    bg_color: '#f5f5f5',
+    description: 'Open support requests'
+  }
+];
