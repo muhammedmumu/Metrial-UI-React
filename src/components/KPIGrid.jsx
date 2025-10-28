@@ -67,7 +67,8 @@ const KPIGrid = () => {
         </Grid>
       ) : (
         <>
-          {usingMockData && (
+          {usingMockData &&
+           (
             <Grid item xs={12}>
               <Alert severity="info" sx={{ mb: 2 }}>
                 Using demo data - backend service unavailable
