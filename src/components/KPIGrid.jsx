@@ -7,7 +7,6 @@ const KPIGrid = () => {
   const [kpiData, setKpiData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [usingMockData, setUsingMockData] = useState(false);
   const theme = useTheme();
 
   useEffect(() => {
@@ -31,7 +30,6 @@ const KPIGrid = () => {
 
         setKpiData(normalized);
         setError(null);
-        setUsingMockData(false);
       } catch (err) {
         console.error('Error fetching KPI data:', err);
         console.log('Using fallback mock data for KPI display');
@@ -44,7 +42,6 @@ const KPIGrid = () => {
         
         setKpiData(normalizedMockData);
         setError(null); // Clear error since we have fallback data
-        setUsingMockData(true);
       } finally {
         setLoading(false);
       }
@@ -67,14 +64,6 @@ const KPIGrid = () => {
         </Grid>
       ) : (
         <>
-          {usingMockData &&
-           (
-            <Grid item xs={12}>
-              <Alert severity="info" sx={{ mb: 2 }}>
-                Using demo data - backend service unavailable
-              </Alert>
-            </Grid>
-          )}
           {kpiData.map((kpi, index) => (
           <Grid 
             item 
