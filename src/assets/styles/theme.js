@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import { dashboardConfig } from '../config/dashboard.config.js';
+import { dashboardConfig } from '../../config/dashboard.config.js';
 
 // Get theme configuration
 const themeConfig = dashboardConfig.theme;

@@ -40,8 +40,8 @@ import {
   LightModeOutlined as LightModeIcon,
   DarkModeOutlined as DarkModeIcon,
 } from '@mui/icons-material';
-import { useApp } from '../../context/useApp.js';
-import { layout } from '../../theme/theme.js';
+import { useApp } from '../store/useApp.js';
+import { layout } from '../assets/styles/theme.js';
 
 export default function Navbar() {
   const { sidebar, user, actions, isMobile, ui, theme: themeState } = useApp();

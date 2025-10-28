@@ -1,13 +1,14 @@
 import React from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline, Typography, Box } from "@mui/material";
-import { AppProvider } from "./context/AppContext.jsx";
-import { createAppTheme } from "./theme/theme.js";
-import { useApp } from "./context/useApp.js";
-import { RouterProvider, Routes, Route } from "./components/Router.jsx";
+import { AppProvider } from "./store/AppContext.jsx";
+import { RouterProvider, Routes, Route } from "./routes/Router.jsx";
+import { createAppTheme } from "./assets/styles/theme.js";
+import { useApp } from "./store/useApp.js";
+import { useRouter } from "./hooks/useRouter.js";
+import MainLayout from "./layouts/MainLayout.jsx";
+import AppBreadcrumbs from "./components/Breadcrumbs/AppBreadcrumbs.jsx";
 import { dashboardConfig } from "./config/dashboard.config.js";
-import MainLayout from "./components/layout/MainLayout.jsx";
-import AppBreadcrumbs from "./components/AppBreadcrumbs.jsx";
 
 // Import all pages
 import HomePage from "./pages/HomePage.jsx";
@@ -31,15 +32,12 @@ import {
   HealthCheckPage,
 } from "./pages/AllPages.jsx";
 
-// Router hook import
-import { useRouter } from "./hooks/useRouter.js";
-
 function AppContent() {
+  console.log("AppContent component is rendering");
+  
   const { theme: themeState } = useApp();
-  const theme = createAppTheme(themeState.mode);
   const { currentPath } = useRouter();
-
-  console.log("App component is rendering with theme mode:", themeState.mode);
+  const theme = createAppTheme(themeState.mode);
 
   // Function to get page title from path
   const getPageTitle = (path) => {
@@ -158,17 +156,20 @@ function AppContent() {
       </ThemeProvider>
     );
   } catch (error) {
-    console.error("Error in App component:", error);
+    console.error("Error in AppContent component:", error);
     return (
       <Box sx={{ p: 2, color: "red" }}>
-        <h2>Error in App component:</h2>
+        <h2>Error in AppContent component:</h2>
         <p>{error.message}</p>
+        <pre>{error.stack}</pre>
       </Box>
     );
   }
 }
 
 function App() {
+  console.log("App component is rendering");
+  
   return (
     <AppProvider>
       <RouterProvider>

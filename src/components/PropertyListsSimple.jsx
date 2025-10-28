@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import ReusableCard from './cards/ReusableCard.jsx';
+import ReusableCard from './Card/ReusableCard.jsx';
 
 const PropertyListsSimple = () => {
   return (

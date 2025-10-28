@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Typography, CircularProgress, Alert, useTheme } from '@mui/material';
-import { ReusableCard } from './cards/index.js';
-import { mockKpiData } from '../utils/mockData.js';
+import { ReusableCard } from '../Card/index.js';
+import { kpiApi } from '../../api/kpiApi.js';
 
 const KPIGrid = () => {
   const [kpiData, setKpiData] = useState([]);
@@ -13,35 +13,12 @@ const KPIGrid = () => {
     const fetchKpiData = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://127.0.0.1:8000/api/kpi/');
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        // Normalize backend field `bg_color` -> `bgcolor` so ReusableCard receives the expected prop
-        const normalized = (Array.isArray(data) ? data : [])
-          .map((item) => ({
-            ...item,
-            // prefer backend `bg_color`, then `bgcolor` if already present
-            bgcolor: item.bg_color ?? item.bgcolor ?? item.bgColor ?? undefined,
-          }));
-
-        setKpiData(normalized);
+        const data = await kpiApi.getKpiData();
+        setKpiData(data);
         setError(null);
       } catch (err) {
         console.error('Error fetching KPI data:', err);
-        console.log('Using fallback mock data for KPI display');
-        
-        // Use mock data as fallback
-        const normalizedMockData = mockKpiData.map((item) => ({
-          ...item,
-          bgcolor: item.bg_color ?? item.bgcolor ?? item.bgColor ?? undefined,
-        }));
-        
-        setKpiData(normalizedMockData);
-        setError(null); // Clear error since we have fallback data
+        setError(err.message);
       } finally {
         setLoading(false);
       }

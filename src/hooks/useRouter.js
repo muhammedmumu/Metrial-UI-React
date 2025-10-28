@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { RouterContext } from '../context/RouterContext.js';
+import { RouterContext } from '../store/RouterContext.js';
 
 // Hook to use router
 export const useRouter = () => {

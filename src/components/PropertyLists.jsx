@@ -11,7 +11,7 @@ import {
   alpha,
 } from '@mui/material';
 import { ArrowForward, LocationOn, Schedule, Work } from '@mui/icons-material';
-import ReusableCard from './cards/ReusableCard.jsx';
+import ReusableCard from './Card/ReusableCard.jsx';
 
 // Sample data (will be replaced with API call later)
 const sampleProperties = [

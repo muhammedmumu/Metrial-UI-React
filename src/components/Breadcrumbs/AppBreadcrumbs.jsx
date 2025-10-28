@@ -2,7 +2,7 @@ import React from 'react';
 import { Breadcrumbs, Link, Typography, Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { NavigateNext as NavigateNextIcon } from '@mui/icons-material';
-import { useRouter } from '../hooks/useRouter.js';
+import { useRouter } from '../../hooks/useRouter.js';
 
 const AppBreadcrumbs = ({ currentPath, navigationConfig }) => {
   const theme = useTheme();

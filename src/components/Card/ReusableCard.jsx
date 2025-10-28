@@ -8,7 +8,7 @@ import {
  
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { getIcon } from "../../utils/icons.js";
+import { getIcon } from "../../assets/icons/icons.js";
 import {
   ExpandLessOutlined,
   ExpandMoreOutlined,

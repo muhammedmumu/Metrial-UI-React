@@ -36,7 +36,7 @@ import {
   ArrowUpward,
   ArrowDownward,
 } from '@mui/icons-material';
-import ReusableCard from './cards/ReusableCard.jsx';
+import ReusableCard from './Card/ReusableCard.jsx';
 
 // Sample data
 const sampleTransactions = [

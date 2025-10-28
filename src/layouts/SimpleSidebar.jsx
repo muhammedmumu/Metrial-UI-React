@@ -13,10 +13,10 @@ import {
   useTheme,
   useMediaQuery,
 } from '@mui/material';
-import { useApp } from '../../context/useApp.js';
-import { useRouter } from '../../hooks/useRouter.js';
-import { getIcon } from '../../utils/icons.js';
-import { dashboardConfig } from '../../config/dashboard.config.js';
+import { useApp } from '../store/useApp.js';
+import { useRouter } from '../hooks/useRouter.js';
+import { getIcon } from '../assets/icons/icons.js';
+import { dashboardConfig } from '../config/dashboard.config.js';
 
 export default function SimpleSidebar() {
   const theme = useTheme();

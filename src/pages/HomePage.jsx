@@ -1,7 +1,7 @@
 import React from 'react';
-import { Typography, Box } from '@mui/material';
-import KPIGrid from '../components/KPIGrid.jsx';
-import { ChartCard } from '../components/charts';
+import { Grid, Typography, Box } from '@mui/material';
+import KPIGrid from '../components/KPIGrid/KPIGrid.jsx';
+import { ChartCard } from '../components/Charts';
 import PropertyLists from '../components/PropertyLists.jsx';
 import ListingInsights from '../components/ListingInsights.jsx';
 import RecentAgentRegistrations from '../components/RecentAgentRegistrations.jsx';
