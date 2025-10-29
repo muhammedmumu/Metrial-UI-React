@@ -1,11 +1,11 @@
 import React from 'react';
 import { Grid, Typography, Box, Divider } from '@mui/material';
 import KPIGrid from '../components/KPIGrid/KPIGrid.jsx';
-import { ChartCard } from '../components/Charts';
+import { ChartCard } from '../components/charts';
 import PropertyLists from '../components/PropertyLists.jsx';
 import ListingInsights from '../components/ListingInsights.jsx';
 import RecentAgentRegistrations from '../components/RecentAgentRegistrations.jsx';
-import PropertyTransactionsTable from '../components/PropertyTransactionsTable.jsx';
+// import PropertyTransactionsTable from '../components/PropertyTransactionsTable.jsx';
 import PropertyTransactionsTableURL from '../components/PropertyTransactionsTableURL.jsx';
 
 const HomePage = () => {
