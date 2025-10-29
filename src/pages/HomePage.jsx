@@ -1,11 +1,12 @@
 import React from 'react';
-import { Grid, Typography, Box } from '@mui/material';
+import { Grid, Typography, Box, Divider } from '@mui/material';
 import KPIGrid from '../components/KPIGrid/KPIGrid.jsx';
 import { ChartCard } from '../components/Charts';
 import PropertyLists from '../components/PropertyLists.jsx';
 import ListingInsights from '../components/ListingInsights.jsx';
 import RecentAgentRegistrations from '../components/RecentAgentRegistrations.jsx';
 import PropertyTransactionsTable from '../components/PropertyTransactionsTable.jsx';
+import PropertyTransactionsTableURL from '../components/PropertyTransactionsTableURL.jsx';
 
 const HomePage = () => {
 
@@ -109,8 +110,19 @@ const HomePage = () => {
       </Box>
 
       {/* Full-width Property Transactions Table */}
-      <Box sx={{ mt: 3, width: "100%" }}>
+      {/* <Box sx={{ mt: 3, width: "100%" }}>
         <PropertyTransactionsTable />
+      </Box> */}
+
+      {/* Divider between tables */}
+     
+
+      {/* URL-driven Property Transactions Table */}
+      <Box sx={{ width: "100%" }}>
+        <PropertyTransactionsTableURL 
+          title=" Property Transactions"
+          prefix="advanced"
+        />
       </Box>
     </>
   );
