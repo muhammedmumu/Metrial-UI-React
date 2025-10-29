@@ -133,7 +133,7 @@ export const layout = {
     height: themeConfig.layout.navbarHeight,
   },
   breakpoints: {
-    mobile: themeConfig.breakpoints.mobile,
+    mobile: themeConfig?.breakpoints?.mobile,
   }
 };
 
