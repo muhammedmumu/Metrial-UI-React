@@ -1,8 +1,29 @@
 import { createTheme } from '@mui/material/styles';
-import { dashboardConfig } from '../../config/dashboard.config.js';
 
-// Get theme configuration
-const themeConfig = dashboardConfig.theme;
+// Use inline theme configuration to avoid build issues with dashboard.config.js
+const themeConfig = {
+  colors: {
+    primary: '#0EA5E9',
+    primaryHover: '#0284C7',
+    primaryActive: '#0369A1',
+    primaryFocus: '#7DD3FC',
+    secondary: '#F97316',
+    accent: '#F97316',
+    accentHover: '#EA580C',
+    accentActive: '#C2410C',
+    accentFocus: '#FDBA74',
+    disabled: '#94A3B8',
+    border: '#E2E8F0',
+    background: '#f5f5f5',
+    sidebar: '#ffffff',
+    navbar: '#ffffff',
+  },
+  layout: {
+    sidebarWidth: 240,
+    collapsedSidebarWidth: 78,
+    navbarHeight: 64,
+  }
+};
 
 // Define your color palette from configuration - light mode
 const lightColors = {
@@ -119,7 +140,7 @@ export const layout = {
 // Create theme function that accepts mode
 export const createAppTheme = (mode = 'light') => {
   const colors = mode === 'light' ? lightColors : darkColors;
-  
+
   return createTheme({
     palette: {
       mode,
