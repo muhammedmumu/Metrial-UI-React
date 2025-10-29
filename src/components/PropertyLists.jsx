@@ -326,6 +326,9 @@ const PropertyLists = () => {
               backgroundColor: 'transparent',
               outline: 'none',
             },
+            '&:focus-visible': {
+              outline: 'none',
+            },
             // Remove default Material-UI button styles
             boxShadow: 'none',
             border: 'none',

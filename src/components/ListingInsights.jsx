@@ -7,13 +7,13 @@ import {
   Alert,
   useTheme,
 } from '@mui/material';
-import { 
-  ArrowForward, 
-  TrendingUp, 
-  TrendingDown, 
+import {
+  ArrowForward,
+  TrendingUp,
+  TrendingDown,
   Home,
   KeyboardArrowUp,
-  KeyboardArrowDown 
+  KeyboardArrowDown
 } from '@mui/icons-material';
 import {
   PieChart,
@@ -54,7 +54,7 @@ const ListingInsights = () => {
         setLoading(true);
         // Simulate API call - replace this with actual API endpoint
         await new Promise(resolve => setTimeout(resolve, 1000));
-        
+
         // For now, use sample data
         setData(sampleData);
         setError(null);
@@ -141,13 +141,14 @@ const ListingInsights = () => {
   return (
     <ReusableCard
       variant="elevated"
-      sx={{ 
-        height: "fit-content", 
-        display: 'flex', 
+      sx={{
+        height: "fit-content",
+        display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        width:{sm:"100%",
-          md:"auto"
+        width: {
+          sm: "100%",
+          md: "auto"
         }
       }}
     >
@@ -177,35 +178,37 @@ const ListingInsights = () => {
         </Typography>
 
         <IconButton
-          onClick={handleViewAll}
+          // onClick={handleViewAll}
           sx={{
-            color: theme.palette.primary.main,
-            backgroundColor: 'transparent',
-            transition: 'all 0.2s ease',
+            // color: theme.palette.primary.main,
+            // backgroundColor: 'transparent',
+            // transition: 'all 0.2s ease',
             '&:hover': {
-              backgroundColor: 'transparent',
-              transform: 'scale(1.05)',
-            },
-            '&:active': {
-              backgroundColor: 'transparent',
-              transform: 'scale(0.95)',
-            },
-            '&:focus': {
-              backgroundColor: 'transparent',
-              outline: 'none',
-            },
-            boxShadow: 'none',
-            border: 'none',
+              // backgroundColor: 'transparent',
+              // transform: 'scale(1.05)',
+            }
+            //   '&:active': {
+            //     backgroundColor: 'transparent',
+            //     transform: 'scale(0.95)',
+            //   },
+            //   '&:focus': {
+            //     outline: 'none',
+            //   },
+            //   '&:focus-visible': {
+            //     outline: 'none',
+            //   },
+            //   boxShadow: 'none',
+            //   border: 'none',
           }}
-          disableRipple={true}
-          disableFocusRipple={true}
+        // disableRipple={true}
+        // disableFocusRipple={true}
         >
           <Typography
             variant="body2"
             sx={{
               color: theme.palette.primary.main,
               fontWeight: 500,
-              mr: 0.5,
+              mr: 0.5
             }}
           >
             View All
@@ -257,6 +260,12 @@ const ListingInsights = () => {
             borderRadius: 2,
             backgroundColor: `${COLORS.forSale}08`,
             border: `1px solid ${COLORS.forSale}20`,
+            '&:focus': {
+              outline: 'none',
+            },
+            '&:focus-visible': {
+              outline: 'none',
+            }
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -293,9 +302,9 @@ const ListingInsights = () => {
             {data?.forSale.change !== 0 && (
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                 {React.createElement(getChangeIndicator(data.forSale.change).icon, {
-                  sx: { 
-                    fontSize: 16, 
-                    color: getChangeIndicator(data.forSale.change).color 
+                  sx: {
+                    fontSize: 16,
+                    color: getChangeIndicator(data.forSale.change).color
                   }
                 })}
                 <Typography
@@ -322,6 +331,12 @@ const ListingInsights = () => {
             borderRadius: 2,
             backgroundColor: `${COLORS.forRent}08`,
             border: `1px solid ${COLORS.forRent}20`,
+            '&:focus': {
+              outline: 'none',
+            },
+            '&:focus-visible': {
+              outline: 'none',
+            }
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -358,9 +373,9 @@ const ListingInsights = () => {
             {data?.forRent.change !== 0 && (
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                 {React.createElement(getChangeIndicator(data.forRent.change).icon, {
-                  sx: { 
-                    fontSize: 16, 
-                    color: getChangeIndicator(data.forRent.change).color 
+                  sx: {
+                    fontSize: 16,
+                    color: getChangeIndicator(data.forRent.change).color
                   }
                 })}
                 <Typography
