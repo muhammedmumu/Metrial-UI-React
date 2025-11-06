@@ -15,7 +15,9 @@ import {
 } from "@mui/icons-material";
 
 // Styled Card component for custom variants
-const StyledCard = styled(Card)(({ theme, variant, bgcolor, clickable, color }) => ({
+const StyledCard = styled(Card, {
+  shouldForwardProp: (prop) => !['clickable', 'bgcolor', 'color'].includes(prop),
+})(({ theme, variant, bgcolor, clickable, color }) => ({
   position: "relative",
   overflow: "visible",
   cursor: clickable ? "pointer" : "default",

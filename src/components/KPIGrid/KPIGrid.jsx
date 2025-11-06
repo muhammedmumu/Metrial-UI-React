@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Typography, CircularProgress, Alert, useTheme } from '@mui/material';
+import { Box, Typography, CircularProgress, Alert, useTheme } from '@mui/material';
 import { ReusableCard } from '../Card/index.js';
-import { kpiApi } from '../../api/kpiApi.js';
+import { mockKpiData } from '../../utils/mockData.js';
 
 const KPIGrid = () => {
   const [kpiData, setKpiData] = useState([]);
@@ -10,82 +10,86 @@ const KPIGrid = () => {
   const theme = useTheme();
 
   useEffect(() => {
-    const fetchKpiData = async () => {
-      try {
-        setLoading(true);
-        const data = await kpiApi.getKpiData();
-        setKpiData(data);
+    // Simulate loading delay and use mock data directly
+    const loadMockData = () => {
+      setLoading(true);
+
+      // Simulate a brief loading state for better UX
+      setTimeout(() => {
+        // Normalize the mock data to match expected format
+        const normalizedData = mockKpiData.map((item) => ({
+          ...item,
+          bgcolor: item.bg_color ?? item.bgcolor ?? item.bgColor ?? undefined,
+        }));
+
+        setKpiData(normalizedData);
         setError(null);
-      } catch (err) {
-        console.error('Error fetching KPI data:', err);
-        setError(err.message);
-      } finally {
         setLoading(false);
-      }
+      }, 500); // Brief 500ms delay to show loading state
     };
 
-    fetchKpiData();
+    loadMockData();
   }, []);
 
   return (
-    <Grid container spacing={3}>
+    <Box sx={{ width: '100%' }}>
       {loading ? (
-        <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
           <CircularProgress />
-        </Grid>
+        </Box>
       ) : error ? (
-        <Grid item xs={12}>
-          <Alert severity="error">
-            Error loading KPI data: {error}
-          </Alert>
-        </Grid>
+        <Alert severity="error">
+          Error loading KPI data: {error}
+        </Alert>
       ) : (
-        <>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: {
+              xs: '1fr',
+              sm: 'repeat(2, 1fr)',
+              md: 'repeat(3, 1fr)',
+              lg: 'repeat(4, 1fr)',
+            },
+            gap: 3,
+            width: '100%'
+          }}
+        >
           {kpiData.map((kpi, index) => (
-          <Grid 
-            item 
-            xs={12}        // 1 card per row on extra small screens
-            sm={12}        // 1 card per row on small screens
-            md={4}         // 3 cards per row on medium screens
-            lg={4}   
-          
-            // 4 cards per row on large screens
-            key={index}
-            sx={{
-              display: 'flex',
-              flexGrow: 1,
-              // stretch child on small screens, but keep auto sizing on md+
-              width: { xs: '100%', md: 'auto' },
-              justifyContent: { xs: 'stretch', md: 'flex-start' },
-              alignItems: 'stretch'
-            }}
-          >
-            <ReusableCard
-              title={kpi.title}
-              value={kpi.value}
-              change={kpi.change}
-              icon={kpi.icon}
-              color={kpi.color}
-              bgcolor={kpi.bgcolor}
-              variant="elevated"
-              onClick={kpi.onClick || (() => console.log(`${kpi.title} clicked!`))}
-              sx={{ width: { xs: '100%', sm: '100%', md: 'auto',flexGrow:"1"} }}
+            <Box
+              key={index}
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%'
+              }}
             >
-              <Typography 
-                variant="body2" 
-                sx={{ 
-                  mt: 0.5, 
-                  color: theme.palette.mode === 'dark' ? 'grey.600' : 'text.secondary'
-                }}
+              <ReusableCard
+                title={kpi.title}
+                value={kpi.value}
+                change={kpi.change}
+                icon={kpi.icon}
+                color={kpi.color}
+                bgcolor={kpi.bgcolor}
+                variant="elevated"
+                onClick={kpi.onClick || (() => console.log(`${kpi.title} clicked!`))}
+                sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
               >
-                {kpi.description}
-              </Typography>
-            </ReusableCard>
-          </Grid>
-        ))}
-        </>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    mt: 0.5,
+                    color: theme.palette.mode === 'dark' ? 'grey.600' : 'text.secondary'
+                  }}
+                >
+                  {kpi.description}
+                </Typography>
+              </ReusableCard>
+            </Box>
+          ))}
+        </Box>
       )}
-    </Grid>
+    </Box>
   );
 };
 
