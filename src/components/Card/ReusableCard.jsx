@@ -5,7 +5,7 @@ import {
   CardActionArea,
   Typography,
   Box,
- 
+
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { getIcon } from "../../assets/icons/icons.js";
@@ -29,8 +29,8 @@ const StyledCard = styled(Card, {
   ...(variant === "elevated" && {
     boxShadow: theme.shadows[2],
     "&:hover": {
-      boxShadow: clickable 
-        ? `0 4px 8px ${color && color !== "inherit" ? `${color}40` : theme.palette.grey[400]}` 
+      boxShadow: clickable
+        ? `0 4px 8px ${color && color !== "inherit" ? `${color}40` : theme.palette.grey[400]}`
         : theme.shadows[2],
       transform: clickable ? "translateY(-2px)" : "none",
     },
@@ -43,7 +43,7 @@ const StyledCard = styled(Card, {
       borderColor: clickable
         ? color && color !== "inherit" ? color : theme.palette.primary.main
         : theme.palette.divider,
-      boxShadow: clickable 
+      boxShadow: clickable
         ? `0 4px 8px ${color && color !== "inherit" ? `${color}30` : theme.palette.primary.main}30`
         : "none",
     },
@@ -55,7 +55,7 @@ const StyledCard = styled(Card, {
       backgroundColor: clickable
         ? theme.palette.grey[100]
         : bgcolor || theme.palette.grey[50],
-      boxShadow: clickable 
+      boxShadow: clickable
         ? `0 4px 16px ${color && color !== "inherit" ? `${color}25` : theme.palette.grey[400]}`
         : "none",
     },
@@ -67,7 +67,7 @@ const StyledCard = styled(Card, {
     backgroundColor: "transparent",
     "&:hover": {
       backgroundColor: clickable ? theme.palette.action.hover : "transparent",
-      boxShadow: clickable 
+      boxShadow: clickable
         ? `0 2px 8px ${color && color !== "inherit" ? `${color}20` : theme.palette.action.hover}`
         : "none",
     },
@@ -76,7 +76,7 @@ const StyledCard = styled(Card, {
   // Default variant
   ...((!variant || variant === "default") && {
     "&:hover": {
-      boxShadow: clickable 
+      boxShadow: clickable
         ? `0 4px 16px ${color && color !== "inherit" ? `${color}30` : theme.palette.grey[400]}`
         : theme.shadows[1],
     },
@@ -114,13 +114,13 @@ const ReusableCard = ({
     changeValue > 0
       ? "TrendingUp"
       : changeValue < 0
-      ? "TrendingDown"
-      : "TrendingFlat";
+        ? "TrendingDown"
+        : "TrendingFlat";
   const ChangeIconComponent = getIcon(changeIcon);
 
   // Card content
   const cardContent = (
-    <CardContent sx={{ p: 1.5, "&:last-child": { pb: 3} }}>
+    <CardContent sx={{ p: 1.5, "&:last-child": { pb: 3 } }}>
       {/* Header with title and icon */}
       {(title || IconComponent) && (
         <Box
@@ -149,21 +149,21 @@ const ReusableCard = ({
             </Box>
           )}
 
-           {title && (
-          <Typography
-            variant="h5"
-            component="div"
-            sx={{
-              color: color !== "inherit" ? color : "text.primary",
-              fontWeight: 600,
-              fontSize: "1rem",
-            }}
-          >
-            {title}
-          </Typography>
-        )}
+          {title && (
+            <Typography
+              variant="h5"
+              component="div"
+              sx={{
+                color: color !== "inherit" ? color : "text.primary",
+                fontWeight: 600,
+                fontSize: "1rem",
+              }}
+            >
+              {title}
+            </Typography>
+          )}
 
-         
+
         </Box>
       )}
 
@@ -194,7 +194,7 @@ const ReusableCard = ({
           )}
 
           {change && (
-            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, m:0}}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, m: 0 }}>
               {changeValue > 0 ? (
                 <ExpandLessOutlined sx={{ fontSize: 16, color: "success.main" }} />
               ) : changeValue < 0 ? (
@@ -218,7 +218,7 @@ const ReusableCard = ({
 
       {/* Custom children content */}
       {children && (
-        <Box sx={{ 
+        <Box sx={{
           mt: (title || IconComponent || value || change) ? 1 : 0,
           width: '100%',
           minHeight: 'auto',
