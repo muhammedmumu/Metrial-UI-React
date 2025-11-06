@@ -7,6 +7,7 @@ import ListingInsights from '../components/ListingInsights.jsx';
 import RecentAgentRegistrations from '../components/RecentAgentRegistrations.jsx';
 // import PropertyTransactionsTable from '../components/PropertyTransactionsTable.jsx';
 import PropertyTransactionsTableURL from '../components/PropertyTransactionsTableURL.jsx';
+import { mockPropertyTransactions } from '../utils/mockData.js';
 
 const HomePage = () => {
 
@@ -103,7 +104,7 @@ const HomePage = () => {
             <PropertyLists />
             <ListingInsights />
           </Box>
-          
+
           {/* Recent Agent Registrations */}
           <RecentAgentRegistrations />
         </Box>
@@ -115,13 +116,12 @@ const HomePage = () => {
       </Box> */}
 
       {/* Divider between tables */}
-     
+
 
       {/* URL-driven Property Transactions Table */}
       <Box sx={{ width: "100%" }}>
-        <PropertyTransactionsTableURL 
-          title=" Property Transactions"
-          prefix="advanced"
+        <PropertyTransactionsTableURL
+          transactions={mockPropertyTransactions}
         />
       </Box>
     </>

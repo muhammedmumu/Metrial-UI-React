@@ -218,35 +218,58 @@ const ListingInsights = () => {
       </Box>
 
       {/* Donut Chart */}
-      <Box
-        sx={{
-          height: 250,
-          position: 'relative',
-          mb: 3,
-        }}
-      >
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
-            <Pie
-              data={chartData}
-              cx="50%"
-              cy="50%"
-              innerRadius={60}
-              outerRadius={100}
-              paddingAngle={2}
-              dataKey="value"
-              animationBegin={0}
-              animationDuration={800}
-            >
-              {chartData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} />
-              ))}
-            </Pie>
-            {/* Center Label */}
-            {renderCenterLabel()}
-          </PieChart>
-        </ResponsiveContainer>
-      </Box>
+      {data && chartData && chartData.length > 0 ? (
+        <Box
+          sx={{
+            width: '100%',
+            height: 250,
+            minHeight: 250,
+            minWidth: 250,
+            position: 'relative',
+            mb: 3,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <ResponsiveContainer width="100%" height="100%" minWidth={250} minHeight={250}>
+            <PieChart width={250} height={250}>
+              <Pie
+                data={chartData}
+                cx="50%"
+                cy="50%"
+                innerRadius={60}
+                outerRadius={100}
+                paddingAngle={2}
+                dataKey="value"
+                animationBegin={0}
+                animationDuration={800}
+              >
+                {chartData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Pie>
+              {/* Center Label */}
+              {renderCenterLabel()}
+            </PieChart>
+          </ResponsiveContainer>
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            width: '100%',
+            height: 250,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            mb: 3,
+          }}
+        >
+          <Typography variant="body2" color="text.secondary">
+            No chart data available
+          </Typography>
+        </Box>
+      )}
 
       {/* Metrics Rows */}
       <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>

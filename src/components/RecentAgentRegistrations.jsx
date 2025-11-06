@@ -10,13 +10,16 @@ import {
   useTheme,
   alpha,
 } from '@mui/material';
-import { 
-  ArrowForward, 
+import {
+  ArrowForward,
   Person,
   Business,
   KeyboardArrowRight,
   MoreVert,
   Home,
+  Delete,
+  RestartAlt,
+  Download,
 } from '@mui/icons-material';
 import ReusableCard from './Card/ReusableCard.jsx';
 
@@ -81,7 +84,7 @@ const RecentAgentRegistrations = () => {
         setLoading(true);
         // Simulate API call - replace this with actual API endpoint
         await new Promise(resolve => setTimeout(resolve, 1000));
-        
+
         // For now, use sample data
         setAgents(sampleAgents);
         setError(null);
@@ -133,7 +136,7 @@ const RecentAgentRegistrations = () => {
       '#FFEAA7',
       '#DDA0DD',
     ];
-    
+
     const index = name.charCodeAt(0) % colors.length;
     return colors[index];
   };
@@ -165,9 +168,9 @@ const RecentAgentRegistrations = () => {
   return (
     <ReusableCard
       variant="elevated"
-      sx={{ 
+      sx={{
         height: 300,
-        display: 'flex', 
+        display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden'
       }}

@@ -157,3 +157,47 @@ export const mockKpiData = [
     description: 'Open support requests'
   }
 ];
+
+// Property Transactions Mock Data
+export const mockPropertyTransactions = [
+  {
+    id: 1,
+    transactionId: 'TXN-001',
+    propertyName: 'Sunset Villa',
+    buyer: 'John Smith',
+    amount: '$450,000',
+    date: '2025-11-01'
+  },
+  {
+    id: 2,
+    transactionId: 'TXN-002',
+    propertyName: 'Ocean View Apartment',
+    buyer: 'Sarah Johnson',
+    amount: '$275,000',
+    date: '2025-10-28'
+  },
+  {
+    id: 3,
+    transactionId: 'TXN-003',
+    propertyName: 'Downtown Loft',
+    buyer: 'Michael Davis',
+    amount: '$320,000',
+    date: '2025-10-25'
+  },
+  {
+    id: 4,
+    transactionId: 'TXN-004',
+    propertyName: 'Suburban House',
+    buyer: 'Emily Wilson',
+    amount: '$385,000',
+    date: '2025-10-20'
+  },
+  {
+    id: 5,
+    transactionId: 'TXN-005',
+    propertyName: 'City Center Condo',
+    buyer: 'Robert Brown',
+    amount: '$298,000',
+    date: '2025-10-15'
+  }
+];
