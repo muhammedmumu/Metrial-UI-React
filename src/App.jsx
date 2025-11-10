@@ -34,7 +34,7 @@ import {
 
 function AppContent() {
   console.log("AppContent component is rendering");
-  
+
   const { theme: themeState } = useApp();
   const { currentPath } = useRouter();
   const theme = createAppTheme(themeState.mode);
@@ -45,7 +45,7 @@ function AppContent() {
     if (navItem) {
       return navItem.text;
     }
-    
+
     // Handle special cases
     switch (path) {
       case '/':
@@ -72,22 +72,15 @@ function AppContent() {
           <Box sx={{ flexDirection: { xs: "column", sm: "column" }, display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
             {/* Page Title */}
             <Box>
-              <Typography
-                variant="h5"
-                sx={{
-                  mb: 0,
-                  color: theme.palette.text.primary,
-                  fontWeight: 600,
-                }}
-              >
+              <Typography variant="h5" sx={{ mb: 0, color: theme.palette.text.primary, fontWeight: 600, }} >
                 {getPageTitle(currentPath)}
               </Typography>
             </Box>
-            
+
             {/* Breadcrumbs */}
-            <AppBreadcrumbs 
-              currentPath={currentPath} 
-              navigationConfig={dashboardConfig.navigation} 
+            <AppBreadcrumbs
+              currentPath={currentPath}
+              navigationConfig={dashboardConfig.navigation}
             />
           </Box>
 
@@ -169,7 +162,7 @@ function AppContent() {
 
 function App() {
   console.log("App component is rendering");
-  
+
   return (
     <AppProvider>
       <RouterProvider>

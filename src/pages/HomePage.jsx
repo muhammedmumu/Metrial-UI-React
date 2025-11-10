@@ -10,7 +10,6 @@ import PropertyTransactionsTableURL from '../components/PropertyTransactionsTabl
 import { mockPropertyTransactions } from '../utils/mockData.js';
 
 const HomePage = () => {
-
   // Sample chart data
   const salesData = [
     { month: "Jan", sales: 4000, target: 3500 },
@@ -40,39 +39,13 @@ const HomePage = () => {
         }}
       >
         {/* Left Side - KPI Cards and Chart */}
-        <Box
-          sx={{
-            width: {
-              xs: "100%", // 100% width on mobile (extra small screens)
-              sm: "100%", // 100% width on small screens
-              lg: "50%", // 50% width on large screens
-            },
-            display: "flex",
-            flexDirection: "column",
-            gap: 3
-          }}
-        >
-          {/* KPI Cards Grid */}
+        <Box sx={{ width: { xs: "100%", sm: "100%", lg: "50%" }, display: "flex", flexDirection: "column", gap: 3 }}>
           <KPIGrid />
-
           {/* Sales Trend Line Chart */}
           <Box>
-            <ChartCard
-              type="line"
-              title="Sales vs Target"
-              icon="TrendingUp"
-              color="#1976d2"
-              data={salesData}
-              xAxisKey="month"
-              series={[
-                { key: "sales", name: "Actual Sales", color: "#1976d2" },
-                { key: "target", name: "Target", color: "#ed6c02" },
-              ]}
-              height={300}
-              showLegend={true}
-              formatValue={formatCurrency}
-              variant="elevated"
-            />
+            <ChartCard type="line" title="Sales vs Target" icon="TrendingUp" color="#1976d2" data={salesData} xAxisKey="month"
+              series={[{ key: "sales", name: "Actual Sales", color: "#1976d2" }, { key: "target", name: "Target", color: "#ed6c02" },]}
+              height={300} showLegend={true} formatValue={formatCurrency} variant="elevated" />
           </Box>
         </Box>
 
@@ -84,37 +57,35 @@ const HomePage = () => {
               sm: "100%", // 100% width on small screens
               lg: "50%",  // 50% width on large screens
             },
-            display: "flex",
-            flexDirection: "column",
-            gap: 3,
-            justifyContent: "space-between",
+            display: "flex", flexDirection: "column", gap: 3, justifyContent: "space-between",
           }}
         >
-          <Box sx={{
-            display: "flex",
-            flexDirection: {
-              xs: "column", // Column layout on small screens
-              sm: "column", // Column layout on small screens
-              lg: "row", // Row layout on large screens
-            },
-            width: "100%",
-            gap: 2,
-            justifyContent: "space-between"
-          }}>
-            <PropertyLists />
-            <ListingInsights />
+
+          <Box
+            sx={{
+              display: "flex", flexDirection: {
+                xs: "column", // Column layout on small screens
+                sm: "column", // Column layout on small screens
+                lg: "row",    // Row layout on large screens
+              },
+              width: "100%", gap: 2, justifyContent: "space-between",
+            }}
+          >
+            {/* ... */}
           </Box>
 
-          {/* Recent Agent Registrations */}
-          <RecentAgentRegistrations />
+          <PropertyLists />
+          <ListingInsights />
         </Box>
+
+        {/* Recent Agent Registrations */}
+        <RecentAgentRegistrations />
       </Box>
 
       {/* Full-width Property Transactions Table */}
       {/* <Box sx={{ mt: 3, width: "100%" }}>
         <PropertyTransactionsTable />
       </Box> */}
-
       {/* Divider between tables */}
 
 
